@@ -7,8 +7,7 @@
 			<th><?php echo $this->Paginator->sort('staff_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('year'); ?></th>
 			<th><?php echo $this->Paginator->sort('month'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('slip_name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -21,8 +20,7 @@
 		</td>
 		<td><?php echo h($slip['Slip']['year']); ?>&nbsp;</td>
 		<td><?php echo h($slip['Slip']['month']); ?>&nbsp;</td>
-		<td><?php echo h($slip['Slip']['created']); ?>&nbsp;</td>
-		<td><?php echo h($slip['Slip']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($slip['Slip']['slip_name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $slip['Slip']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $slip['Slip']['id'])); ?>

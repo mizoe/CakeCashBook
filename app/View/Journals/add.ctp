@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Journal'); ?></legend>
 	<?php
-		echo $this->Form->input('slip_id');
+		echo $this->Form->input('slip_id', array('label' => '年月'));
 		echo $this->Form->input('date');
 		echo $this->Form->input('subject');
 		echo $this->Form->input('amount');

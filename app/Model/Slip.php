@@ -13,8 +13,7 @@ class Slip extends AppModel {
  *
  * @var string
  */
-//	public $displayField = 'year' . '-' . 'month';
-	public $displayField = 'month';
+	public $displayField = 'slip_name';
 
 /**
  * Validation rules
