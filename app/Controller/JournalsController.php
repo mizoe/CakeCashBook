@@ -27,6 +27,43 @@ class JournalsController extends AppController {
 	}
 
 /**
+ * show_monthly method
+ *
+ * @return void
+ */
+	public function show_monthly($year = null, $month = null, $staff_id = null) {
+		$this->Journal->recursive = 0;
+		$cond = array();
+		if($year != null){
+			if($month == null){
+				$cond['Journal.date >= '] = $year . "-1-1";
+				$cond['Journal.date <= '] = $year . "-12-31";
+			}else{
+				$cond['Journal.date >= '] = $year . "-" . $month . "-1";
+				$cond['Journal.date <= '] = $year . "-" . $month . "-31";
+			}
+		}
+		if($staff_id != null){
+			$cond['Journal.staff_id'] = $staff_id;
+		}
+		$this->Paginator->settings = array(
+			'conditions' => $cond,
+		);
+		$this->set('journals', $this->Paginator->paginate());
+		
+		// total
+		$options = array(
+            'fields' => array(
+                'sum(Journal.amount) as sumAmount'
+            ),
+            'conditions' => $cond
+        );
+        $total = $this->Journal->find('first', $options);
+		$this->set('total', $total[0]['sumAmount']);
+	}
+
+
+/**
  * view method
  *
  * @throws NotFoundException
@@ -56,8 +93,8 @@ class JournalsController extends AppController {
 				$this->Session->setFlash(__('The journal could not be saved. Please, try again.'));
 			}
 		}
-		$slips = $this->Journal->Slip->find('list');
-		$this->set(compact('slips'));
+		$staffs = $this->Journal->Staff->find('list');
+		$this->set(compact('staffs'));
 	}
 
 /**
@@ -82,8 +119,8 @@ class JournalsController extends AppController {
 			$options = array('conditions' => array('Journal.' . $this->Journal->primaryKey => $id));
 			$this->request->data = $this->Journal->find('first', $options);
 		}
-		$slips = $this->Journal->Slip->find('list');
-		$this->set(compact('slips'));
+		$staffs = $this->Journal->Staff->find('list');
+		$this->set(compact('staffs'));
 	}
 
 /**

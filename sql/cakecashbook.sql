@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015 年 8 朁E12 日 04:34
+-- Generation Time: 2015 年 8 朁E12 日 05:40
 -- サーバのバージョン： 5.6.25
 -- PHP Version: 5.6.11
 
@@ -28,29 +28,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `journals` (
   `id` int(11) NOT NULL,
-  `slip_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `subject` varchar(64) NOT NULL,
   `amount` int(11) NOT NULL,
   `note` varchar(255) NOT NULL,
-  `created` int(11) NOT NULL,
-  `modified` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `slips`
---
-
-CREATE TABLE IF NOT EXISTS `slips` (
-  `id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `year` int(11) NOT NULL,
-  `month` int(11) NOT NULL COMMENT '1:Jan, 12:Dec',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `journals`
+--
+
+INSERT INTO `journals` (`id`, `staff_id`, `date`, `subject`, `amount`, `note`, `created`, `modified`) VALUES
+(1, 1, '2015-08-12', '消耗品費', 108, 'ダイソー消しゴム', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -63,7 +55,14 @@ CREATE TABLE IF NOT EXISTS `staffs` (
   `staff_name` varchar(64) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `staffs`
+--
+
+INSERT INTO `staffs` (`id`, `staff_name`, `created`, `modified`) VALUES
+(1, 'じゅらいたろう', '2015-08-12 04:46:32', '2015-08-12 04:46:32');
 
 --
 -- Indexes for dumped tables
@@ -73,12 +72,6 @@ CREATE TABLE IF NOT EXISTS `staffs` (
 -- Indexes for table `journals`
 --
 ALTER TABLE `journals`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `slips`
---
-ALTER TABLE `slips`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -95,17 +88,12 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `journals`
 --
 ALTER TABLE `journals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `slips`
---
-ALTER TABLE `slips`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `staffs`
 --
 ALTER TABLE `staffs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -30,8 +30,8 @@ class StaffFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'staff_name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2015-08-12 04:45:17',
-			'modified' => '2015-08-12 04:45:17'
+			'created' => '2015-08-12 06:44:21',
+			'modified' => '2015-08-12 06:44:21'
 		),
 	);
 

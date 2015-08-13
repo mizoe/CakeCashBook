@@ -12,13 +12,13 @@ class JournalFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'slip_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'staff_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'date' => array('type' => 'date', 'null' => false, 'default' => null),
 		'subject' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'amount' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'note' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'created' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
-		'modified' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
+		'modified' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -33,13 +33,13 @@ class JournalFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'slip_id' => 1,
+			'staff_id' => 1,
 			'date' => '2015-08-12',
 			'subject' => 'Lorem ipsum dolor sit amet',
 			'amount' => 1,
 			'note' => 'Lorem ipsum dolor sit amet',
-			'created' => 1,
-			'modified' => 1
+			'created' => '2015-08-12 06:44:00',
+			'modified' => '2015-08-12 06:44:00'
 		),
 	);
 

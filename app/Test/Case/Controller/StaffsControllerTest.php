@@ -14,7 +14,6 @@ class StaffsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.staff',
-		'app.slip',
 		'app.journal'
 	);
 

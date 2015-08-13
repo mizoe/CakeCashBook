@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Staff Model
  *
- * @property Slip $Slip
+ * @property Journal $Journal
  */
 class Staff extends AppModel {
 
@@ -40,8 +40,8 @@ class Staff extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Slip' => array(
-			'className' => 'Slip',
+		'Journal' => array(
+			'className' => 'Journal',
 			'foreignKey' => 'staff_id',
 			'dependent' => false,
 			'conditions' => '',

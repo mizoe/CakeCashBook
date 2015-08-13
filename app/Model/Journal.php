@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Journal Model
  *
- * @property Slip $Slip
+ * @property Staff $Staff
  */
 class Journal extends AppModel {
 
@@ -20,7 +20,7 @@ class Journal extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'slip_id' => array(
+		'staff_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -70,12 +70,43 @@ class Journal extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Slip' => array(
-			'className' => 'Slip',
-			'foreignKey' => 'slip_id',
+		'Staff' => array(
+			'className' => 'Staff',
+			'foreignKey' => 'staff_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
+	
+/**
+ * getRecent()
+ *
+ * @var array
+ */
+	public function getMonthly($year = null, $month = null, $staff_id = null) {
+        $conditions = array();
+		if($year != null){
+			if($month == null){
+				$conditions['date >= '] = $year . "-1-1";
+				$conditions['date <= '] = $year . "-12-31";
+			}else{
+				$conditions['date >= '] = $year . "-" . $month . "-1";
+				$conditions['date <= '] = $year . "-" . $month . "-31";
+			}
+		}
+		if($staff_id != null){
+			$conditions['staff_id'] = $staff_id;
+		}
+
+		$options = array(
+            'fields' => array(
+                'sum(amount) as sumAmount',
+                'id','staff_id','date','subject','amount','note','created','modified',
+                'Staff.id','Staff.staff_name','Staff.created','Staff.modified'
+            ),
+            'conditions' => $conditions
+        );
+        return $this->find('all', $options);
+    }
 }

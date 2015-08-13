@@ -14,7 +14,7 @@ class JournalsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.journal',
-		'app.slip'
+		'app.staff'
 	);
 
 /**

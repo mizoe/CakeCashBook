@@ -36,6 +36,7 @@
 <?php endforeach; ?>
 	</tbody>
 	</table>
+	<p>合計: <?php echo $total; ?>円</p>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

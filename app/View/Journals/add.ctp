@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Journal'); ?></legend>
 	<?php
-		echo $this->Form->input('slip_id', array('label' => '年月'));
+		echo $this->Form->input('staff_id');
 		echo $this->Form->input('date');
 		echo $this->Form->input('subject');
 		echo $this->Form->input('amount');
@@ -17,7 +17,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Journals'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Slips'), array('controller' => 'slips', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Slip'), array('controller' => 'slips', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Staffs'), array('controller' => 'staffs', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Staff'), array('controller' => 'staffs', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

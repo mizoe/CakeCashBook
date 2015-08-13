@@ -13,7 +13,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Staffs'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Slips'), array('controller' => 'slips', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Slip'), array('controller' => 'slips', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Journals'), array('controller' => 'journals', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Slip'), array('controller' => 'journals', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

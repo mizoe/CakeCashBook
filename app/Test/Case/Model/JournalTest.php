@@ -14,7 +14,7 @@ class JournalTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.journal',
-		'app.slip'
+		'app.staff'
 	);
 
 /**
