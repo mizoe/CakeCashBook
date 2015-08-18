@@ -27,39 +27,29 @@ class JournalsController extends AppController {
 	}
 
 /**
+ * show_json method
+ *
+ * @return void
+ */
+	public function show_json($year = null, $month = null, $staff_id = null, $getTotal = false){
+        $res = $this->Journal->getMonthly($year, $month, $staff_id, $getTotal);
+		$this->viewClass = 'json';
+		$this->set(compact('res'));
+		$this->set('_serialize','res');
+	}
+
+/**
  * show_monthly method
  *
  * @return void
  */
-	public function show_monthly($year = null, $month = null, $staff_id = null) {
-		$this->Journal->recursive = 0;
-		$cond = array();
-		if($year != null){
-			if($month == null){
-				$cond['Journal.date >= '] = $year . "-1-1";
-				$cond['Journal.date <= '] = $year . "-12-31";
-			}else{
-				$cond['Journal.date >= '] = $year . "-" . $month . "-1";
-				$cond['Journal.date <= '] = $year . "-" . $month . "-31";
-			}
-		}
-		if($staff_id != null){
-			$cond['Journal.staff_id'] = $staff_id;
-		}
-		$this->Paginator->settings = array(
-			'conditions' => $cond,
-		);
+	public function show_monthly($year = null, $month = null, $staff_id = null){
+		$options = $this->Journal->monthlyOptions($year, $month, $staff_id, true);
+		$this->Paginator->settings = $options;
 		$this->set('journals', $this->Paginator->paginate());
 		
-		// total
-		$options = array(
-            'fields' => array(
-                'sum(Journal.amount) as sumAmount'
-            ),
-            'conditions' => $cond
-        );
-        $total = $this->Journal->find('first', $options);
-		$this->set('total', $total[0]['sumAmount']);
+        $total = $this->Journal->getMonthly($year, $month, $staff_id, true);
+		$this->set('total', $total[0][0]['sumAmount']);
 	}
 
 

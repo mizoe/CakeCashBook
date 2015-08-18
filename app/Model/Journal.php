@@ -80,33 +80,42 @@ class Journal extends AppModel {
 	);
 	
 /**
- * getRecent()
+ * getMonthly()
  *
  * @var array
  */
-	public function getMonthly($year = null, $month = null, $staff_id = null) {
+	public function getMonthly($year = null, $month = null, $staff_id = null, $getTotal = false) {
+		$options = $this->monthlyOptions($year = null, $month = null, $staff_id = null, $getTotal = false);
+        return $this->find('all', $options);
+    }
+/**
+ * monthlyOptions()
+ *
+ * @var array
+ */
+	public function monthlyOptions($year = null, $month = null, $staff_id = null, $getTotal = false) {
         $conditions = array();
 		if($year != null){
 			if($month == null){
-				$conditions['date >= '] = $year . "-1-1";
-				$conditions['date <= '] = $year . "-12-31";
+				$conditions['Journal.date >= '] = $year . "-1-1";
+				$conditions['Journal.date <= '] = $year . "-12-31";
 			}else{
-				$conditions['date >= '] = $year . "-" . $month . "-1";
-				$conditions['date <= '] = $year . "-" . $month . "-31";
+				$conditions['Journal.date >= '] = $year . "-" . $month . "-1";
+				$conditions['Journal.date <= '] = $year . "-" . $month . "-31";
 			}
 		}
 		if($staff_id != null){
-			$conditions['staff_id'] = $staff_id;
+			$conditions['Journal.staff_id'] = $staff_id;
 		}
 
 		$options = array(
-            'fields' => array(
-                'sum(amount) as sumAmount',
-                'id','staff_id','date','subject','amount','note','created','modified',
-                'Staff.id','Staff.staff_name','Staff.created','Staff.modified'
-            ),
             'conditions' => $conditions
         );
-        return $this->find('all', $options);
-    }
+        if($getTotal == false){
+        	$options['fields'] = array(
+                'sum(Journal.amount) as sumAmount'
+            );
+        }
+        return $options;
+	}
 }
