@@ -4,7 +4,13 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('staff_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('email'); ?></th>
+			<th><?php echo $this->Paginator->sort('postcode'); ?></th>
+			<th><?php echo $this->Paginator->sort('address'); ?></th>
+			<th><?php echo $this->Paginator->sort('birthday'); ?></th>
+			<th><?php echo $this->Paginator->sort('joined_date'); ?></th>
+			<th><?php echo $this->Paginator->sort('department_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -14,7 +20,15 @@
 	<?php foreach ($staffs as $staff): ?>
 	<tr>
 		<td><?php echo h($staff['Staff']['id']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['staff_name']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['name']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['email']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['postcode']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['address']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['birthday']); ?>&nbsp;</td>
+		<td><?php echo h($staff['Staff']['joined_date']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($staff['Department']['name'], array('controller' => 'departments', 'action' => 'view', $staff['Department']['id'])); ?>
+		</td>
 		<td><?php echo h($staff['Staff']['created']); ?>&nbsp;</td>
 		<td><?php echo h($staff['Staff']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -44,7 +58,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Staff'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Journals'), array('controller' => 'journals', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Slip'), array('controller' => 'journals', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Departments'), array('controller' => 'departments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Department'), array('controller' => 'departments', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

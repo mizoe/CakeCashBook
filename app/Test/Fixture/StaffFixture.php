@@ -12,7 +12,13 @@ class StaffFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'staff_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'email' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 128, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'postcode' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 8, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'address' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'birthday' => array('type' => 'date', 'null' => false, 'default' => null),
+		'joined_date' => array('type' => 'date', 'null' => false, 'default' => null),
+		'department_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(
@@ -29,9 +35,15 @@ class StaffFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'staff_name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2015-08-12 06:44:21',
-			'modified' => '2015-08-12 06:44:21'
+			'name' => 'Lorem ipsum dolor sit amet',
+			'email' => 'Lorem ipsum dolor sit amet',
+			'postcode' => 'Lorem ',
+			'address' => 'Lorem ipsum dolor sit amet',
+			'birthday' => '2015-08-19',
+			'joined_date' => '2015-08-19',
+			'department_id' => 1,
+			'created' => '2015-08-19 01:59:24',
+			'modified' => '2015-08-19 01:59:24'
 		),
 	);
 

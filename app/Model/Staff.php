@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Staff Model
  *
- * @property Journal $Journal
+ * @property Department $Department
  */
 class Staff extends AppModel {
 
@@ -12,47 +12,23 @@ class Staff extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'staff_name';
+	public $displayField = 'name';
 
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
-		'staff_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'Journal' => array(
-			'className' => 'Journal',
-			'foreignKey' => 'staff_id',
-			'dependent' => false,
+	public $belongsTo = array(
+		'Department' => array(
+			'className' => 'Department',
+			'foreignKey' => 'department_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'order' => ''
 		)
 	);
-
 }

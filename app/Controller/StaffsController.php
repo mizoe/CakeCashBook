@@ -56,6 +56,8 @@ class StaffsController extends AppController {
 				$this->Session->setFlash(__('The staff could not be saved. Please, try again.'));
 			}
 		}
+		$departments = $this->Staff->Department->find('list');
+		$this->set(compact('departments'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class StaffsController extends AppController {
 			$options = array('conditions' => array('Staff.' . $this->Staff->primaryKey => $id));
 			$this->request->data = $this->Staff->find('first', $options);
 		}
+		$departments = $this->Staff->Department->find('list');
+		$this->set(compact('departments'));
 	}
 
 /**

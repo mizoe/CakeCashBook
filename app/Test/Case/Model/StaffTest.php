@@ -14,7 +14,7 @@ class StaffTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.staff',
-		'app.journal'
+		'app.department'
 	);
 
 /**
